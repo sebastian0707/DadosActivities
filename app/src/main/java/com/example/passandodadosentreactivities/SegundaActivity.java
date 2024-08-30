@@ -7,23 +7,33 @@ import android.widget.TextView;
 
 public class SegundaActivity extends AppCompatActivity {
 
-    private TextView textnome, textIdade;
+    private TextView textViewNome;
+    private TextView textViewIdade;
+    private TextView textViewTelefone;
+    private TextView textViewEmail;
+    private TextView textViewEndereco;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_segunda);
 
-        textnome = findViewById(R.id.textNome);
-        textIdade = findViewById(R.id.textIdade);
+        textViewNome = findViewById(R.id.textViewNome);
+        textViewIdade = findViewById(R.id.textViewIdade);
+        textViewTelefone = findViewById(R.id.textViewTelefone);
+        textViewEmail = findViewById(R.id.textViewEmail);
+        textViewEndereco = findViewById(R.id.textViewEndereco);
 
         Bundle dados = getIntent().getExtras();
-        String nome = dados.getString("nome");
-        int idade = dados.getInt("idade");
 
-        Usuario usuario = (Usuario) dados.getSerializable("objeto");
+        Usuario usuario = (Usuario) dados.getSerializable("usuario");
 
-        textnome.setText(usuario.getEmail());
-        textIdade.setText(String.valueOf(idade));
+        if (usuario != null) {
+            textViewNome.setText("Nome: " + usuario.getNome());
+            textViewIdade.setText("Idade: " + usuario.getIdade());
+            textViewTelefone.setText("Telefone: " + usuario.getTelefone());
+            textViewEmail.setText("E-mail: " + usuario.getEmail());
+            textViewEndereco.setText("Endereço: " + usuario.getEndereco());
+        }
     }
 }

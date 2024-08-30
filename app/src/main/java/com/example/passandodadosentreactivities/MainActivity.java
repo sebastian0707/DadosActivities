@@ -6,38 +6,46 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button buttonEnviar;
+    private EditText editTextNome;
+    private EditText editTextIdade;
+    private EditText editTextTelefone;
+    private EditText editTextEmail;
+    private EditText editTextEndereco;
+    private Button buttonSalvar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_main);
 
-        buttonEnviar = findViewById(R.id.buttonEnviar);
+        editTextNome = findViewById(R.id.editTextNome);
+        editTextIdade = findViewById(R.id.editTextIdade);
+        editTextTelefone = findViewById(R.id.editTextTelefone);
+        editTextEmail = findViewById(R.id.editTextEmail);
+        editTextEndereco = findViewById(R.id.editTextEndereco);
+        buttonSalvar = findViewById(R.id.buttonSalvar);
 
-        buttonEnviar.setOnClickListener(new View.OnClickListener() {
+        buttonSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
+                Usuario usuario = new Usuario(
+                        editTextNome.getText().toString(),
+                        editTextIdade.getText().toString(),
+                        editTextTelefone.getText().toString(),
+                        editTextEmail.getText().toString(),
+                        editTextEndereco.getText().toString()
+                );
 
-                Intent intent = new Intent(getApplicationContext(), SegundaActivity.class);
-                Usuario usuario = new Usuario("Sebas", "floressebastian@gmail.com");
-
-
-
-                //passar dados
-                intent.putExtra("nome","Sebastian");
-                intent.putExtra("idade", 23);
-                intent.putExtra("objeto", usuario);
-
-
+                Intent intent = new Intent(MainActivity.this, SegundaActivity.class);
+                intent.putExtra("usuario", usuario);
                 startActivity(intent);
-
             }
         });
-
-
     }
 }

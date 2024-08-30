@@ -4,9 +4,21 @@ import java.io.Serializable;
 
 public class Usuario implements Serializable {
 
-    public Usuario(String nome, String email) {
+    private String nome;
+
+    private String telefone;
+    private String email;
+    private String endereco;
+    private String idade;
+
+    ;
+
+    public Usuario(String nome, String idade, String telefone, String email, String endereco) {
         this.nome = nome;
+        this.idade = idade;
+        this.telefone = telefone;
         this.email = email;
+        this.endereco = endereco;
     }
 
     public String getNome() {
@@ -17,6 +29,22 @@ public class Usuario implements Serializable {
         this.nome = nome;
     }
 
+    public String getIdade() {
+        return idade;
+    }
+
+    public void setIdade(String idade) {
+        this.idade = idade;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -25,8 +53,11 @@ public class Usuario implements Serializable {
         this.email = email;
     }
 
-    private String nome;
-    private String email;
+    public String getEndereco() {
+        return endereco;
+    }
 
-
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
 }
